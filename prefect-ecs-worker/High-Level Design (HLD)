@@ -1,0 +1,37 @@
+
+
+
+
++-------------------+
+|                   |
+|  Prefect Cloud    |
+|  (Work Pool:     |
+|   ecs-work-pool)  |
+|                   |
++--------+----------+
+         |
+         | Uses API Key from AWS Secrets Manager
+         v
++-------------------+        +---------------------+
+|                   |        |                     |
+|  AWS Secrets      +------->  ECS Task Definition  |
+|  Manager          |        |  (prefecthq/prefect:|
+|  (prefect-api-key)|        |   2-latest image)   |
++-------------------+        +-----------+---------+
+                                    |
+                                    v
+                           +-------+--------+
+                           |                |
+                           |  ECS Fargate   |
+                           |  Service       |
+                           | (dev-worker)    |
+                           +--------+-------+
+                                    |
+                                    v
+                         +---------+----------+
+                         |                    |
+                         |  VPC               |
+                         |  Subnets            |
+                         |  Private Subnet     |
+                         |  NAT Gateway        |
+                         +--------------------+
