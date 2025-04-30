@@ -1,0 +1,43 @@
+Complete Source Code Documentation
+Overview of the Code Structure
+The Terraform code is organized into modular components for better maintainability and reusability. Below is a breakdown of the key files and their roles:
+
+1. main.tf
+Purpose : Main configuration file that ties together all modules and resources.
+Key Resources :
+VPC Module : Sets up the network infrastructure.
+IAM Role : Defines permissions for ECS tasks.
+ECS Cluster : Creates the ECS cluster for hosting the worker.
+ECS Task Definition : Specifies the container image, CPU/memory, and environment variables.
+ECS Service : Deploys the worker as a service on Fargate.
+2. variables.tf
+Purpose : Defines input variables for customization.
+Key Variables :
+prefect_account_id: Your Prefect Cloud account ID.
+prefect_workspace_id: Your Prefect Cloud workspace ID.
+aws_region: AWS region where resources will be deployed.
+prefect_api_secret_name: Name of the secret in AWS Secrets Manager.
+3. outputs.tf
+Purpose : Exports useful information after deployment.
+Key Outputs :
+ecs_cluster_arn: ARN of the ECS cluster.
+worker_service_arn: ARN of the ECS service.
+4. providers.tf
+Purpose : Configures the AWS provider for Terraform.
+Key Configuration :
+Specifies the AWS region.
+Ensures compatibility with Terraform v1.2.0 and above.
+5. README.md
+Purpose : Provides a user guide for setting up and deploying the infrastructure.
+Sections :
+Why Terraform was chosen.
+Prerequisites (AWS CLI, Terraform CLI, Prefect Cloud account).
+Step-by-step instructions for deployment.
+Verification steps to confirm the setup.
+6. report.md
+Purpose : Summarizes the assignment approach, learnings, challenges, and suggestions for improvements.
+Sections :
+Tool choice: Terraform vs CloudFormation.
+Key learnings from the project.
+Challenges faced and how they were resolved.
+Suggestions for future enhancements.
